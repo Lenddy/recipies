@@ -70,3 +70,6 @@ class User:
             flash("password must be minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character","password")
         if len(user["password"]) < 8:
             flash("your password must be at least 8 character long")
+            is_valid = False
+        if user["confirm_password"] != user["password"]:
+            flash("password does not mach","confirm")

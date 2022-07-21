@@ -6,5 +6,41 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 	</head>
-	<body></body>
+	<body>
+		<form action="/registration" method="post">
+			<div>
+				<label for="f_name">First Name</label>
+				<input type="text" name="f_name" id="" />{%for message in
+				get_flashed_messages(category_filter = ['f_name']):%}
+				{{message}} {% endfor %}
+			</div>
+			<div>
+				<label for="l_name">Last Name</label>
+				<input type="text" name="l_name" id="" />{%for message in
+				get_flashed_messages(category_filter = ['l_name']):%}
+				{{message}} {% endfor %}
+			</div>
+			<div>
+				<label for="email">Email</label>
+				<input type="text" name="email" id="" />{%for message in
+				get_flashed_messages(category_filter = ['email']):%} {{message}}
+				{% endfor %}
+			</div>
+			<div>
+				<label for="password">Password</label>
+				<input type="password" name="password" id="" />{%for message in
+				get_flashed_messages(category_filter = ['password']):%}
+				{{message}} {% endfor %}
+			</div>
+			<div>
+				<label for="confirm_password">Confirm Password</label>
+				<input type="password" name="confirm_password" id="" />{%for
+				message in get_flashed_messages(category_filter =
+				['confirm']):%} {{message}} {% endfor %}
+			</div>
+			<div>
+				<button type="submit">create</button>
+			</div>
+		</form>
+	</body>
 </html>

@@ -1,6 +1,8 @@
-from flask import render_template, request
+from flask import redirect, render_template, request
 from flask_app import app
 from flask_bcrypt import Bcrypt
+
+from flask_app.models.user_model import User
 bcrypt = Bcrypt(app)
 
 
@@ -10,9 +12,13 @@ bcrypt = Bcrypt(app)
 def registration_form():
     return render_template("index.html")
 
-@app.route("/registration")
+@app.route("/registration", methods = ["post"])
 def registration():
+    if not User.validation(request.form):
+        return redirect("/")
     data ={
         **request.form,
         "password": bcrypt.generate_password_hash("password")
     }
+    User.add_one(data)
+    return redirect("/")
